@@ -88,7 +88,10 @@ Isso gera arquivos em `data/raw/` e `data/processed/`.
 
 ## Rodar a Aplicação Streamlit:
 ```bash
-streamlit run app/app.py
+cd app
+```
+```bash
+streamlit run app.py
 ```
 
 Acesse no navegador (geralmente `http://localhost:8501`).  
