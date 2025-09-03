@@ -103,3 +103,6 @@ pytest tests/
 
 - Abra issues no repositório para bugs ou features.
 - Pull Requests: Siga o estilo PEP8 e adicione testes.
+
+# Exemplo de fluxo N8N
+<img width="1652" height="623" alt="Image" src="https://github.com/user-attachments/assets/205336c6-cbf0-49e5-b660-45d4c28a0d2f" />
