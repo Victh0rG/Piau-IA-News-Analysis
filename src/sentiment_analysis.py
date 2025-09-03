@@ -24,7 +24,6 @@ def analyze_sentiments(input_csv, output_csv='data/processed/analise_sentimentos
             return "Neutra"
 
     df["Sentimento"] = df.iloc[:, 1].apply(analisar_sentimento)
-    df.drop(columns=["title"], inplace=True)
     df.to_csv(output_csv, index=False)
     logging.info(f"Análise de sentimentos salva em {output_csv}")
     return output_csv
