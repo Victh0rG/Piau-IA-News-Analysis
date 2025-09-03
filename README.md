@@ -98,8 +98,14 @@ Exibe gráfico de pizza, nuvem de palavras e tabela interativa.
 ```bash
 pytest tests/
 ```
+# Resultados
+<img width="1202" height="779" alt="Image" src="https://github.com/user-attachments/assets/a46cb297-b635-4759-87ce-e894c2405914" />
+<img width="971" height="698" alt="Image" src="https://github.com/user-attachments/assets/bd231349-866e-4013-91c1-130bc2fe8a7a" />
 
 # Contribuição
 
 - Abra issues no repositório para bugs ou features.
 - Pull Requests: Siga o estilo PEP8 e adicione testes.
+
+# Exemplo de fluxo N8N
+<img width="1652" height="623" alt="Image" src="https://github.com/user-attachments/assets/205336c6-cbf0-49e5-b660-45d4c28a0d2f" />
