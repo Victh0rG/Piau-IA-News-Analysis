@@ -1,0 +1,212 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "1e634396-8438-4a77-b448-1db0d07cda1b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://news.google.com/rss/search?q=Intelig%C3%AAncia+Artificial+Piau%C3%AD+SIA+Piau%C3%AD&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "options": {}
+      },
+      "id": "305a3169-1991-4d9f-9732-ca3af80e36d7",
+      "name": "RSS Read",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "dataPropertyName": "summary",
+        "options": {}
+      },
+      "id": "c54b3b7c-3fbd-44bd-9145-0d0230b47e8f",
+      "name": "HTML Extract",
+      "type": "n8n-nodes-base.htmlExtract",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "d11bc0b0-ea1b-4626-9358-4f5bd6d073bd",
+      "name": "Clean Text",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "67825e6f-7b4a-4b18-b447-8129c713b56b",
+      "name": "Sentiment Analysis (Function)",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        880,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "5e31053a-6025-4d51-8dea-606613b7ca03",
+      "name": "Aggregate Data",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1104,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fileName": "analise_sentimentos.csv",
+        "options": {}
+      },
+      "id": "285852b0-4bd1-48a5-83ec-c72f67e4b83a",
+      "name": "Write File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "victhorgb1080@gmail.com",
+        "toEmail": "gabrielibiert00@gmail.com",
+        "subject": "Relatório Diário de Sentimentos - Piauí",
+        "text": "Hello mother fucker",
+        "options": {}
+      },
+      "id": "89408f81-3d24-4046-9bc7-4d4392ca59fa",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        208
+      ],
+      "credentials": {
+        "smtp": {
+          "id": null,
+          "name": "Your_SMTP_Credential"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "HTML Extract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML Extract": {
+      "main": [
+        [
+          {
+            "node": "Clean Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Text": {
+      "main": [
+        [
+          {
+            "node": "Sentiment Analysis (Function)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sentiment Analysis (Function)": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Data": {
+      "main": [
+        [
+          {
+            "node": "Write File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "61452e85-5236-4d56-9195-00b57f588846",
+  "meta": {
+    "instanceId": "0bf8b047eb03d1b4ff15c185e3d27a64555d4d9082bae9cc8026450c294eeba8"
+  },
+  "id": "DmwMHw3dwBWrukpk",
+  "tags": []
+}
